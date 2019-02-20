@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="jumbotron text-center">
+  <h1>Welcome the Bones' Website</h1>
+  <p class="lead">Not a lot to do here</p>
+  {% if session.logged_in == NULL %}
+    <a href="/register" class="btn btn-primary">Register</a>
+    <a href="/login" class="btn btn-primary">Login</a>
+  {% else %}
+    <a href="/game" class="btn btn-primary">Play the Game!</a>
+    <a href="/high-scores" class="btn btn-primary">Check out the high scores!</a>
+  {% endif %}
+
+</div>
+{% endblock %}

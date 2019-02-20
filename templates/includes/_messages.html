@@ -1,0 +1,23 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      {% if message == "That is incorrect! Hit this button to submit your score!" %}
+      <div class="alert alert-{{ category }} text-center">{{message}}
+        <form action="/high-scores" method="POST" id="form1">
+          <button class="btn btn-outline-secondary" type="submit" form="form1" value="Submit">Submit Score</button>
+        </form>
+      </div>
+      {% else %}
+      <div class="alert alert-{{ category }} text-center">{{ message }}</div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+{% if error %}
+  <div class="alert alert-danger text-center">{{error}}</div>
+{% endif %}
+
+{% if msg %}
+  <div class="alert alert-success text-center">{{msg}}</div>
+{% endif %}

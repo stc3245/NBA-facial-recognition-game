@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 text-center">
+        <h3></h3>
+        <img src={{data[2]}} id="player_pic" class="rounded mx-auto d-block" style="border: #00008B 4p">
+      </div>
+      <div class="col-sm-5 text-center">
+        <br><br>
+        <h3>Streak: {{session.streak}}</h3>
+        <br><br>
+        <button class="btn btn-light" name="button" onclick=toggle_display()>Get hint</button>
+        <br><br><br>
+        <form class="form" id="form" method="POST" action="/game">
+          <div class="input-group mb-3">
+            <input type="text" name="name" class="form-control" placeholder="Guess name here!" aria-label="Guess name here" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-light" value="submit" type="submit">Button</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="hint1" style="visibility: hidden;">
+        <h5>
+          {% if data[0]["TEAM_CITY"] != "" %}
+            <li>This player plays for the {{data[0]['TEAM_CITY']}} {{data[0]["TEAM_NAME"]}} and wears the number {{data[0]["JERSEY"]}}.</li>
+          {% else %}
+            <li>This player is currently a free agent.</li>
+          {% endif %}
+        </h5>
+        <div class="hint2" style="visibility: hidden;">
+        <h5>
+          {% if data[1] != None %}
+            <li>This player was selected number {{data[0]['DRAFT_NUMBER']}} in the {{data[0]['FROM_YEAR']}} draft by the {{data[1]['TEAM_CITY']}} {{data[1]['TEAM_NAME']}}.</li>
+          {% else %}
+            <li>This player went undrafted in the {{data[0]['FROM_YEAR']}} draft.</li>
+          {% endif %}
+        </h5>
+        <div class="hint3" style="visibility: hidden;">
+          <h5>
+            {% if data[1] != None %}
+              <li>This player played pre-professional ball at {{data[1]['ORGANIZATION']}}.</li>
+            {% else %}
+              <li>This player played pre-professional ball at {{data[0]['LAST_AFFILIATION']}}.</li>
+            {% endif %}
+          </h5>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
