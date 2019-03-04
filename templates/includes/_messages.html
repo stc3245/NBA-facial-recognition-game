@@ -2,7 +2,7 @@
   {% if messages %}
     {% for category, message in messages %}
       {% if message == "That is incorrect! Hit this button to submit your score!" %}
-      <div class="alert alert-{{ category }} text-center">{{message}}
+      <div class="alert alert-{{ category }} text-center">{{message}} Score: {{session['last_score']}}
         <form action="/high-scores" method="POST" id="form1">
           <button class="btn btn-outline-secondary" type="submit" form="form1" value="Submit">Submit Score</button>
         </form>
