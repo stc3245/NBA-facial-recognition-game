@@ -13,17 +13,20 @@ def get_random_player_data():
 
     players = output['activeplayers']['playerentry']
     player_pic = None
+    draft_status = None
+    random_player_id = random.randint(1,844)
 
-    while player_pic == None:
-        player =  players[random.randint(1,844)]['player']
+    while player_pic == None or draft_status == None  :
+        player =  players[random_player_id]['player']
         player_pic = player['officialImageSrc']
+        draft_status = player["draft"]
 
     playerName = player["FirstName"] + " " + player["LastName"]
     playerLastName = player["LastName"]
     print(playerName)
     firstHint = get_player_first_hint(player)
     secondHint = get_player_second_hint(player)
-    thirdHint = get_player_third_hint(player)
+    thirdHint = get_player_third_hint(player, players, random_player_id)
     return (playerName, playerLastName, player_pic, firstHint, secondHint, thirdHint)
 
 
@@ -37,15 +40,17 @@ def get_player_first_hint(player):
 
 
 def get_player_second_hint(player):
-    if player['IsRookie'] == True:
-        return "This player is a rookie and  plays for the "
+    if player['IsRookie'] == "true":
+        return "This player is a rookie"
     elif player['draft'] != None:
-        return "This player was drafted in round number " + player["draft"]["Round"] + " at pick number " + player["draft"]["RoundPick"] + " by the " + player['draft']['team']["City"] + " " + player['draft']['team']["Name"]
+        return "This player was drafted in round number " + player["draft"]["Round"] + " at pick number " + player["draft"]["RoundPick"] + " of the " + player['draft']["Year"] + " draft by the " + player['draft']['team']["City"] + " " + player['draft']['team']["Name"]
     return "This player went undrafted."
 
 
-def get_player_third_hint(player):
-    return None
+def get_player_third_hint(player, allPlayers, playerID):
+    if "JerseyNumber" in player and "Position" in  player and 'team' in allPlayers[playerID]:
+        return "This player wears the number " + player["JerseyNumber"]  + " and plays for the " + allPlayers[playerID]['team']['City'] + " " + allPlayers[playerID]['team']['Name']
+    return "This player is currently a free agent."
 
 
 def main():
