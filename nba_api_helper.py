@@ -7,19 +7,21 @@ import random
 msf = MySportsFeeds(version="1.2")
 msf.authenticate("5d25b9f7-fe4d-48fe-b492-20d97d", "sball12345")
 
-output = msf.msf_get_data(league='nba',season='2018-2019-regular',feed='active_players',format='json',force="true")
+output = msf.msf_get_data(league='nba',season='2018-2019-regular',feed='active_players',format='json',force="false")
 
 def get_random_player_data():
 
     players = output['activeplayers']['playerentry']
     player_pic = None
     draft_status = None
-    random_player_id = random.randint(1,844)
+    random_player_id = 0
 
     while player_pic == None or draft_status == None  :
+        random_player_id = random.randint(1,844)
         player =  players[random_player_id]['player']
         player_pic = player['officialImageSrc']
         draft_status = player["draft"]
+        print("hey")
 
     playerName = player["FirstName"] + " " + player["LastName"]
     playerLastName = player["LastName"]
