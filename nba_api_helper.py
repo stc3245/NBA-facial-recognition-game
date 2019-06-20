@@ -21,14 +21,14 @@ def get_random_player_data():
         player =  players[random_player_id]['player']
         player_pic = player['officialImageSrc']
         draft_status = player["draft"]
-        print("hey")
 
     playerName = player["FirstName"] + " " + player["LastName"]
     playerLastName = player["LastName"]
-    print(playerName)
+
     firstHint = get_player_first_hint(player)
     secondHint = get_player_second_hint(player)
     thirdHint = get_player_third_hint(player, players, random_player_id)
+    
     return (playerName, playerLastName, player_pic, firstHint, secondHint, thirdHint)
 
 

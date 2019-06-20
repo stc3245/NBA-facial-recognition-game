@@ -2,5 +2,22 @@
 
 {% block body %}
 <h1>Dashboard</h1>
-<small>Ayo whadup, {{session.username}}</small>
+<p>Hello, {{session.username}}</p>
+<p>These are your current high-scores</p>
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+    <th>Streak</th>
+    <th>Date</th>
+  </tr>
+  {% for score in scores %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{score.username}}</td>
+      <td>{{score.score}}</td>
+      <td>{{score.create_date}}</td>
+    </tr>
+  {% endfor %}
+</table>
 {% endblock %}
