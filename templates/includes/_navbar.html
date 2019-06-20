@@ -1,7 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/NYCS-bull-trans-B.svg/2000px-NYCS-bull-trans-B.svg.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    Bones Enterprises
+    <img src="./static/logo-via-logohub.png" width="300" height="30" class="d-inline-block align-top" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,22 +9,22 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link text-light bg-dark" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-dark bg-light" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-light bg-dark" href="/game">Game</a>
+        <a class="nav-link text-dark bg-light" href="/game">Game</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-light bg-dark" href="/high-scores">High Scores</a>
+        <a class="nav-link text-dark bg-light" href="/high-scores">High Scores</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0" id="navbarsExampleDefault">
       {% if session.logged_in %}
-      <a class="nav-link text-light bg-dark" href="/logout">Logout</a>
-      <a class="nav-link text-light bg-dark" href="/dashboard  ">Account</a>
+      <a class="nav-link text-dark bg-light" href="/logout">Logout</a>
+      <a class="nav-link text-dark bg-light" href="/dashboard  ">Account</a>
       {% else %}
-      <a class="nav-link text-light bg-dark" href="/register">Register</a>
-      <a class="nav-link text-light bg-darks" href="/login">Login</a>
+      <a class="nav-link text-dark bg-light" href="/register">Register</a>
+      <a class="nav-link text-dark bg-light" href="/login">Login</a>
       {% endif %}
 
     </form>
