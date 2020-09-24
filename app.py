@@ -86,7 +86,7 @@ def scores():
         cur = db.cursor(MySQLdb.cursors.DictCursor)
         username = session["username"]
         score = str(session["last_score"])
-        result = cur.execute("INSERT INTO `scores` (`id`, `username`, `score`, `create_date`) VALUES (NULL, '"+username+"', '"+score+"', CURRENT_TIMESTAMP);")
+        result = cur.execute("INSERT INTO `scores` (`id`, `username`, `score`, `create_date`) VALUES (NULL, %s, %s, CURRENT_TIMESTAMP);", (username, score))
         cur.close
         db.commit()
         flash("Your score has been subitted", "success")
