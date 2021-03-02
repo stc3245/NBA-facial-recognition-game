@@ -12,9 +12,8 @@ app = Flask(__name__)
 def dbConnect():
     return MySQLdb.connect(host="private",
                         user="private",
-                        password="private",
+                        password="ptivate",
                         db="private")
-
 
 def is_logged_in(f):
     @wraps(f)
@@ -188,5 +187,7 @@ def dashboard():
 
 
 if __name__ == '__main__':
+    app.secret_key = 'super secret key'
+
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
